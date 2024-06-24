@@ -3,8 +3,8 @@ import Navbar from './components/navbar/Navbar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 
-// Untuk bagian contenConatiner ikutn dive-note aj
-const queryClient = new QueryClient();
+// Untuk bagian contenConatiner ikutn dive-note
+// const queryClient = new QueryClient();
 
 function App() {
   return (
