@@ -1,20 +1,27 @@
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Plus, House } from 'lucide-react';
 import { menu } from '../../data';
 
-const Sidebar = () => {
+const Sidebar = ({ openModal }) => {
+  const handleColorClick = () => {
+    openModal();
+  };
   return (
-    <div className="menu">
-      {menu.map((item) => (
-        <div className="item flex flex-col gap-2 mb-5 " key={item.id}>
-          <span className="title uppercase text-base font-semibold">{item.title}</span>
-          {item.listItems.map((listItem) => (
-            <a href={listItem.url} className="listItem flex items-center gap-3 p-2 rounded-md hover:bg-slate-400 " key={listItem.id}>
-              <img src={listItem.icon} className="sm:block hidden" alt="" />
-              <span className="listItemTitle">{listItem.title}</span>
-            </a>
-          ))}
-        </div>
-      ))}
+    <div className="flex h-screen w-24 items-center flex-col px-2 bg-transparent pt-4 px border-r border-[#383838]">
+      <div className="inline-flex h-16 w-16 items-center justify-center " style={{ marginBottom: 20 }}>
+        <span className="grid h-10 w-10 place-content-center  text-lg font-semibold text-black">Dice</span>
+      </div>
+
+      <div className="flex flex-col h-16 w-16 px-4 bg-[#383838] rounded-md items-center justify-center" style={{ marginBottom: 20 }}>
+        <House color="#ffff" strokeWidth={1.25} />
+        <span className="grid place-content-center  text-lg   text-white">Home</span>
+      </div>
+      <div className="inline-flex h-16 w-16 items-center justify-center">
+        <button href="" className="group relative flex flex-col items-center justify-center rounded px-2 py-1.5 text-[#556067]  " onClick={handleColorClick}>
+          <Plus color="#556067" />
+          Create
+        </button>
+      </div>
     </div>
   );
 };

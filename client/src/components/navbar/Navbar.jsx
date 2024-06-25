@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <div className="navbar w-full p-5 flex items-center justify-between ">
+    <div className="navbar w-full p-5 flex items-center justify-between border-b  border-[#383838] ">
       <div className="logo flex items-center gap-2 font-bold">
         <img src="logo.svg" alt="" />
         <span>lamadmin</span>
