@@ -33,6 +33,20 @@ app.post('/addpassword', (req, res) => {
   });
 });
 
+app.get('/showpasswords', (req, res) => {
+  db.query('SELECT * FROM passwords;', (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.post('/decryptpassword', (req, res) => {
+  res.send(decrypt(req.body));
+});
+
 app.listen(PORT, () => {
   console.log('Server is running');
 });

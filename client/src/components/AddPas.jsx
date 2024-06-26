@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 
-export default function AddPas({ onClose }) {
+export default function AddPas({ onClose, fetchPasswords }) {
   const [title, setTitle] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -33,6 +33,8 @@ const addPassword = () => {
 
       const data = await response.text(); // Assuming server responds with 'Success' as plain text
       console.log(data); // Should log 'Success'
+      fetchPasswords();
+      closeModal(); //tutup modal jika sudah berhasil dikirm
     } catch (error) {
       console.error('Error adding password:', error);
     }
@@ -64,8 +66,7 @@ const addPassword = () => {
             <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900">
               Note
             </label>
-            <input type="password" placeholder="password..." className="placeholder-black text-black bg-transparent border  rounded-md  border-black" value={password}
-        onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" placeholder="password..." className="placeholder-black text-black bg-transparent border  rounded-md  border-black" value={password} onChange={(e) => setPassword(e.target.value)} />
             <div className="flex justify-center items-center">
               <button href="#_" type="submit" class="group relative inline-block overflow-hidden  bg-purple-50 px-5 py-2.5 font-medium text-purple-600">
                 <span class="absolute left-0 top-0 mb-0 flex h-0 w-full translate-y-0 transform bg-purple-600 opacity-90 transition-all duration-200 ease-out group-hover:h-full"></span>
