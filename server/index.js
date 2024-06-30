@@ -14,17 +14,13 @@ const db = mysql.createConnection({
   host: 'localhost',
   password: '',
   database: 'passwordmanager',
-  port: 3307, //ini port xampp, sedangkan diatas port databse
+  port: 3307,
 });
-
-//buat endpoint addpassword menangani permintaan pada URL http://localhost:3001/addpassword
 
 app.post('/addpassword', (req, res) => {
   const { password, title } = req.body;
   const hashedPassword = encrypt(password);
   db.query('INSERT INTO password (title, password, iv) VALUES (?,?,?)', [title, hashedPassword.password, hashedPassword.iv], (err, result) => {
-    // Jika ada kesalahan saat melakukan query, cetak kesalahan ke konsol
-    //jika tidak maka cetak 'succes'
     if (err) {
       console.log(err);
     } else {

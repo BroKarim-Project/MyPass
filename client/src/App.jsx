@@ -7,11 +7,8 @@ import AddPas from './components/AddPas';
 import SearchBar from './components/Search';
 import PassCard from './components/PassCard';
 
-
 // ! By @BroKariim
 // * Availabel in Github
-
-
 
 const queryClient = new QueryClient();
 
@@ -59,10 +56,6 @@ function App() {
       console.error('Error decrypting password:', error);
     }
   };
-
-  //nah seperti yg kita tahu di database, password disimpan dalam bentuk decripsi
-  // sehingga jika hany fetch yg ditapilkan adalah data encrypt, ini akan membuat pemilikinya tidak bisa melihat
-  /// sehingga steelah fetch dengan showpassword kita harus decrypt
 
   const openModal = () => {
     console.log('Opening Modal');
