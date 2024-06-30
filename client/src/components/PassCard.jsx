@@ -16,16 +16,16 @@ export default function PassCard({ handleDelete, acc, decryptPassword }) {
   const svgIconPath = getSvgIconPath(acc.title);
   return (
     <>
-      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} class=" rounded-xl border max-h-[200px] border-white p-4 flex flex-col items-center ">
-        <span class="inline-block rounded-lg p-3">
-          <div class="inline-flex align-middle justify-center items-center select-none text-white">
-            <img className='w-16 h-16' src={svgIconPath} alt={acc.title} />
+      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className=" rounded-xl shadow-[8px_8px_0px_rgba(0,0,0,1)] max-h-[200px] bg-[white] border-black border-2 p-4 flex flex-col items-center ">
+        <span className="inline-block rounded-lg p-3">
+          <div className="inline-flex align-middle justify-center items-center select-none text-black">
+            <img className="w-16 h-16" src={svgIconPath} alt={acc.title} />
           </div>
         </span>
         {/* disini bakal nerima acc.titel */}
-        <h2 class="mt-2 font-semibold text-base sm:text-lg text-white">{acc.title}</h2>
+        <h2 className="mt-2 font-semibold text-base sm:text-lg text-black">{acc.title}</h2>
         {/* disini bakal nerima acc.password */}
-        <p class="sm:mt-1 block text-center text-sm cursor-pointer sm:text-base text-gray-300"> {isHovered ? acc.decryptedPassword : acc.password} </p>
+        <p className="sm:mt-1 block text-center text-sm cursor-pointer sm:text-base text-black"> {isHovered ? acc.decryptedPassword : acc.password} </p>
       </div>
     </>
   );

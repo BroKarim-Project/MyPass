@@ -22,7 +22,7 @@ const db = mysql.createConnection({
 app.post('/addpassword', (req, res) => {
   const { password, title } = req.body;
   const hashedPassword = encrypt(password);
-  db.query('INSERT INTO passwords (password, title, iv) VALUES (?,?,?)', [hashedPassword.password, title, hashedPassword.iv], (err, result) => {
+  db.query('INSERT INTO password (title, password, iv) VALUES (?,?,?)', [title, hashedPassword.password, hashedPassword.iv], (err, result) => {
     // Jika ada kesalahan saat melakukan query, cetak kesalahan ke konsol
     //jika tidak maka cetak 'succes'
     if (err) {
@@ -34,7 +34,7 @@ app.post('/addpassword', (req, res) => {
 });
 
 app.get('/showpasswords', (req, res) => {
-  db.query('SELECT * FROM passwords;', (err, result) => {
+  db.query('SELECT * FROM password;', (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -45,6 +45,7 @@ app.get('/showpasswords', (req, res) => {
 
 app.post('/decryptpassword', (req, res) => {
   res.send(decrypt(req.body));
+  console.log('Request body:', req.body);
 });
 
 app.listen(PORT, () => {

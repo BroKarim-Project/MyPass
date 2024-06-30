@@ -6,7 +6,7 @@ export default function SearchBar() {
   return (
     <>
       <div className="relative w-full">
-        <Input type="text" className="w-full h-10 bg-[#383838] pl-10 text-black rounded-md" name="full_name" as={Fragment}>
+        <Input type="text" className="w-full h-10 bg-transparent border-black border-2  pl-10 text-black rounded-md" name="full_name" as={Fragment}>
           {/* <Search/> */}
           {({ focus, hover }) => <input placeholder="Seach ..." className={('border text-black placeholder-gray-500 ', focus && 'bg-[#383838]', hover && 'shadow')} />}
         </Input>
