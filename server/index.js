@@ -14,7 +14,14 @@ const db = mysql.createConnection({
   host: 'localhost',
   password: '',
   database: 'passwordmanager',
-  port: 3307,
+});
+//decide to use mysql workbench than xampp, so i check the connection first
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database');
 });
 
 app.post('/addpassword', (req, res) => {
