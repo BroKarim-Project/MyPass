@@ -3,7 +3,7 @@
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="client/public/mypass.png" width="250" hspace="4">
+  <img src="client/public/mypass.png" width="720" hspace="4">
 </p>
 
 ## ⚙️ Built with Amazing Tools
