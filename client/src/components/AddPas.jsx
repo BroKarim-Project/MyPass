@@ -6,6 +6,7 @@ export default function AddPas({ onClose, fetchPasswords }) {
   const [password, setPassword] = React.useState('');
 
   const addPassword = async () => {
+    const userId = localStorage.getItem('userId');
     try {
       const response = await fetch('http://localhost:3001/addpassword', {
         method: 'POST',
@@ -15,6 +16,7 @@ export default function AddPas({ onClose, fetchPasswords }) {
         body: JSON.stringify({
           password: password,
           title: title,
+          user_id: userId,
         }),
       });
 
@@ -24,7 +26,7 @@ export default function AddPas({ onClose, fetchPasswords }) {
 
       const data = await response.text(); // Assuming server responds with 'Success' as plain text
       console.log(data); // Should log 'Success'
-      fetchPasswords();
+      await fetchPasswords(userId); // Fetch updated data
       closeModal();
     } catch (error) {
       console.error('Error adding password:', error);
