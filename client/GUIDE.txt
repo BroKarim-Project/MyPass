@@ -1,0 +1,160 @@
+🎉SRC 1
+- Code : https://github.com/TomDoesTech/password-manager
+- Yt   : https://www.youtube.com/watch?v=wHVzfjrD1Xg&t=370s  (pake next, tpi g tau untuk databasenya)
+- Design : https://dribbble.com/shots/24336634-RoboForm-Web-App
+🎉 SRC 2 
+- yt : https://www.youtube.com/watch?v=q9V7kLXvP3E&t=27s
+- github : https://github.com/machadop1407/password-manager-react-mysql/blob/main/client/src/App.js
+
+🎯NEW SIDEBAR
+- Pake punya dice,
+- design : 
+
+🎉 SRC SIDEBAR (OLD)
+- https://github.com/safak/react-admin-ui/tree/completed
+
+🎉LOGO FIGMA COLLECTION
+- 
+ https://www.figma.com/design/tHi9ps7OYAEDDNzgLibmVe/1%2C400-SVG-Logos-Collection-(1%2C439-components)-(Community)?node-id=8-72&t=UuThluqA4AczIq4t-0
+
+🎉SVG COLLECTION OF BRAND
+- https://simpleicons.org/?q=ai
+Github : https://github.com/simple-icons/simple-icons/tree/develop/_data
+
+
+🚀CARA BUAT REST API
+yt : https://www.youtube.com/watch?v=jBAZPXNQq0Y
+-- STEP
+ > npm init
+
+
+🚀VERSION 2
+Ini ada sambungan, ntar version 2 kita bakal tambhakan fitur login dan menggunakna firebase
+untuk referensi ada d note hp "pas-manager"
+
+dia lebih sederhana karena pake react dan mysql
+
+🔐AUTH DIBUAT DENGAN GOOGLE + NodeJS
+yt : https://www.youtube.com/watch?v=hhcrQi40Ths
+
+yang lebih sesuai : 
+https://www.youtube.com/watch?v=pdd04JzJrDw
+
+- Jadi kita pengennay login dengan google, namun datanya tersimpan di mysql
+- jika user tidak login yang ditampilkan di main bukanlah card, namun button "need google login"
+
+- jika tombol di tekan bakal ngarah ke halam login google
+- sisanya nengpk chatgpt, bagian pas-manager udh dijelasin
+
+🚀VERSION 3
+- rapiin code dengan komponen yang lebih kecil lagi, tamba fitur [delet, edit dan copy]
+
+
+
+🚀STEP
+Wajib buat untuk penjelasan, dokuemntasi dll..
+- buat fe
+- buat & connect databasenya
+- make encypt & decrypt for password,
+- buat endpoint (addpassword, showpassword, decryptpassword, delete)
+- make add pasword so we can add from FE to BE
+- fetch into the password to FE into a card with map func
+- decryppt it
+- icon function
+- done
+
+
+🚀VER 2
+- Ganti firebase
+- aktifkan bagian search
+- buat edit mode
+
+
+🚀VER 3
+- tambhakan login
+- 
+
+
+
+
+--------------------------------------------------
+DI INDEX.js
+
+import * as dotenv from dotenv;
+import { google } from 'googleapis';
+
+//ouath google
+const oauth2Client = new google.auth.OAuth2(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET,
+  'http://localhost:5173/auth/google/callback',
+);
+
+//data yang bakal kita ambil
+const scopes = [
+  'https://www.googleapis.com/auth/userinfo.email',
+  'https://www.googleapis.com/auth/userinfo.profile'
+]
+
+const authorizationUrl = oauth2Client.generateAuthUrl({
+  access_type: 'offline',
+  scope: scopes,
+  include_granted_scopes: true,
+})
+
+//google endpoint login
+app.get('/auth/google', (req, res) => {
+  res.redirect(authorizationUrl);
+})
+
+//klo berhasil atau gagal dia akan masuk ke sini (home)
+app,get('/auth/google/callback', async (req, res) =>{
+  const {code} = req.query
+  //minta toke pada google
+  const {tokens} = await oauth2Client.getToken(code );
+  oauth2Client.setCredentials(tokens);
+
+  //ambile user info dari token 
+  const ouath2 = google.oauth2({
+    auth: oauth2Client,
+    version: 'v2'
+  })
+
+  const {data} = await ouath2.userinfo.get();
+
+  //jika tidak dapat data
+  if(!data){
+    return(res.json)({
+      data:data,
+    })
+  }
+  //jika dapat pakai untuk LOGIN
+  // let user = await
+})
+
+
+
+
+
+const handleLoginSuccess = async (token) => {
+    try {
+      const response = await fetch('http://localhost:3001/auth/google/callback', {
+        method: 'POST', // Specify the HTTP method
+        headers: { 'Content-Type': 'application/json' }, // Set content type header
+        body: JSON.stringify({ token }), // Stringify data for POST request
+      });
+
+      if (response.ok) {
+        // Check for successful response (2xx status code)
+        const data = await response.json(); // Parse JSON response data
+        if (data.isLoggedIn) {
+          setIsLoggedIn(true);
+          fetchPasswordsGoogle(token);
+        }
+      } else {
+        console.error(`Error: ${response.status} - ${await response.text()}`); // Handle non-2xx status codes
+      }
+    } catch (error) {
+      console.error('Error handling login success:', error);
+    }
+  };

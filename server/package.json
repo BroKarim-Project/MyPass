@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "author": "BroKarim",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "google-auth-library": "^9.11.0",
+    "googleapis": "^140.0.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.1.4",
+    "uuid": "^10.0.0"
+  }
+}

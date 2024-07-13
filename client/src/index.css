@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  /* font-family: "Lato", sans-serif; */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* transitions.css */
+.transition-enter {
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+  transform: scale(95%);
+  opacity: 0;
+}
+
+.transition-enter-active {
+  transform: scale(100%);
+  opacity: 1;
+}
+
+.transition-leave {
+  transition: transform 0.075s ease-in, opacity 0.075s ease-in;
+  transform: scale(100%);
+  opacity: 1;
+}
+
+.transition-leave-active {
+  transform: scale(95%);
+  opacity: 0;
+}
