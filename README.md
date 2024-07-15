@@ -1,10 +1,8 @@
 <h1 align="center">🔐Never Forget a Password Again: Build Your Own Secure Manager</h1>
 
-## 📱 Screenshots
+## 📱 Video
 
-<p align="center">
-  <img src="client/public/mypass.png" width="250" hspace="4">
-</p>
+https://github.com/user-attachments/assets/cf464b2e-1785-4ce2-b3eb-1819649849dd
 
 ## ⚙️ Built with Amazing Tools
 
